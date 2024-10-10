@@ -8,22 +8,34 @@ public class BluetoothReceiver : MonoBehaviour
     private SerialPort serialPort;
     private Thread serialThread;
     private bool keepReading;
-    
+
     // シリアル通信の設定
-    public string portName = "COM4"; // ポート番号
-    public int baudRate = 115200;    // ボーレート
+    public string portName = "/dev/ttyUSB0"; // M5StickC Plus2では実際のポートを利用
+    public int baudRate = 115200; // ボーレート
 
     private string receivedData = ""; // 受信データを格納
     private object dataLock = new object(); // データロックオブジェクト
 
-    //gyro_xはYに対応、gyro_zはXに対応
-    public float X=0f, Y=0f;
+    // gyro_xはYに対応、gyro_zはXに対応
+    public float roll = 0f, pitch = 0f, yaw = 0f;
+    public float accX = 0f, accY = 0f, accZ=0f;
+    public float gyroX=0f, gyroY = 0f, gyroZ=0f;
+    public int is_fire = 0;
 
     void Start()
     {
         // シリアルポートを開く
         serialPort = new SerialPort(portName, baudRate);
-        serialPort.Open();
+        // シリアルポートが開けるか確認する
+        try
+        {
+            serialPort.Open();
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"シリアルポートを開けませんでした: {ex.Message}");
+            return;
+        }
 
         // スレッドを開始
         keepReading = true;
@@ -35,7 +47,7 @@ public class BluetoothReceiver : MonoBehaviour
     {
         // メインスレッドで画面表示やゲームオブジェクトの更新を行う
         string dataToProcess = null;
-        
+
         lock (dataLock)
         {
             if (!string.IsNullOrEmpty(receivedData))
@@ -48,7 +60,7 @@ public class BluetoothReceiver : MonoBehaviour
         if (dataToProcess != null)
         {
             // 受け取ったデータの処理
-            Debug.Log("gyro_x, gyro_z: " + dataToProcess);
+            Debug.Log("data original: " + dataToProcess);
             ProcessData(dataToProcess);
         }
     }
@@ -61,7 +73,7 @@ public class BluetoothReceiver : MonoBehaviour
             try
             {
                 string data = serialPort.ReadLine();
-                
+
                 lock (dataLock)
                 {
                     receivedData = data; // 受信したデータを格納
@@ -72,6 +84,10 @@ public class BluetoothReceiver : MonoBehaviour
                 Debug.Log("timeout");
                 // タイムアウト処理（必要に応じて）
             }
+            catch (Exception ex)
+            {
+                Debug.Log($"データ読み込みエラー: {ex.Message}");
+            }
         }
     }
 
@@ -80,15 +96,32 @@ public class BluetoothReceiver : MonoBehaviour
         // データの処理
         string[] values = data.Split("sep");
 
-        //cursorに渡すデータとして成形する
-        X = float.Parse(values[0]) - 13;
-        Y = float.Parse(values[1]) - 4;
+        // cursorに渡すデータとして成形する
+        if (values.Length >= 4) // 必要な値の数を確認
+        {
+            roll = float.Parse(values[0]) * 3f;
+            //pitch = float.Parse(values[1]) * 3f;
+            //yaw = float.Parse(values[2]) * 3f;
+            is_fire = int.Parse(values[3]);
 
-        if(X < 5.0f && X > -5.0f) X = 0;
-        if(Y < 5.0f && Y > -5.0f) Y = 0;
+            //accX = float.Parse(values[4]);
+            //accY = float.Parse(values[5]);
+            //accZ = float.Parse(values[6]);
 
-        Debug.Log($"Accelerometer data: x={X}, y={Y}");
-        
+            //gyroX = float.Parse(values[7]);
+            //gyroY = float.Parse(values[8]);
+            gyroZ = float.Parse(values[9]) * Time.deltaTime;
+
+            //pitch = pitch + accX * Time.deltaTime;
+
+
+
+            //Debug.Log($"data: {data}");
+        }
+        else
+        {
+            Debug.Log("不正なデータフォーマット: " + data);
+        }
     }
 
     void OnApplicationQuit()
@@ -103,7 +136,7 @@ public class BluetoothReceiver : MonoBehaviour
 
         if (serialPort != null && serialPort.IsOpen)
         {
-            serialPort.Close();
+            serialPort.Close(); // シリアルポートを閉じる
         }
     }
 }

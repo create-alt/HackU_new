@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 // using System.IO.Ports;
 
@@ -11,8 +13,8 @@ public class Cursor : MonoBehaviour
     Vector3 target_serial;
 
     BluetoothReceiver target_script;
-    private double target_x, target_y;
-    private double X=0, Y=0;
+    private float X=0f, Y=0f, Z=0f, gyro=0f;
+    private int is_fire=0;
 
     // Start is called before the first frame update
     void Start()
@@ -31,32 +33,36 @@ public class Cursor : MonoBehaviour
         
         try
         {
-            target_script = goal_serial.GetComponent<BluetoothReceiver>();
-            target_x = target_script.X;
-            target_y = target_script.Y;
+            target_script = GameObject.Find("Reciever").GetComponent<BluetoothReceiver>();
+            X -= target_script.gyroZ;
+            Y = target_script.roll*1.3f;
+            Z = target_script.yaw;
 
-            X += target_x * Time.deltaTime;
-            Y += target_y * Time.deltaTime;
-            
-            //target_x,yの値を閾値で区切って値の変化を一定にしてみる
-            if(target_x )
+            //Debug.Log(target_script.yaw);
+
+            is_fire = target_script.is_fire;
 
             // X, Yの範囲を制限
-            X = Mathf.Clamp((float)X, -30f, 30f);
-            Y = Mathf.Clamp((float)Y, -16f, 18f);
+            // X = Mathf.Clamp((float)X, -30f, 30f);
+            X = Mathf.Clamp((float)X, -40f, 40f);
+
+            Y = (float)Math.Round(Y, 2, MidpointRounding.AwayFromZero);
+            Y = Mathf.Clamp((float)Y, -23f, 23f);
 
             // 現在のオブジェクトの位置
-            Vector3 currentPos = transform.position;
+            // Vector3 currentPos = transform.position;
 
             // スクリーン座標をワールド座標に変換
-            Vector3 targetPos = Camera.main.ScreenToWorldPoint(new Vector3((float)X, (float)Y, 30f));
+            //Vector3 targetPos = Camera.main.ScreenToWorldPoint(new Vector3(0f, (float)Z, 30f));
+
+            transform.position = new Vector3(X,(float)Y, 30f);
 
             // 補間して滑らかに移動
-            transform.position = Vector3.Lerp(currentPos, targetPos, 0.1f); // 第三引数は補間の割合
+            // transform.position = Vector3.Lerp(currentPos, targetPos, 0.1f); // 第三引数は補間の割合
         }
         catch (System.Exception e)
         {
-            Debug.LogWarning("Error reading serial port: " + e.Message);
+            Debug.Log("Error reading serial port");
         }
 
     }

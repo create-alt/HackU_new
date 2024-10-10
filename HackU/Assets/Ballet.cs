@@ -24,7 +24,7 @@ public class Ballet : MonoBehaviour
     {
 
         Vector3 current = transform.position;            //現在の玉の位置（玉の出現と発射は原点から行う）
-        float maxDistanceDelta = 10.0f * Time.deltaTime;  //1フレームあたりの移動速度
+        float maxDistanceDelta = 100.0f * Time.deltaTime;  //1フレームあたりの移動速度
         transform.position = Vector3.MoveTowards(current, target_base, maxDistanceDelta);
         
         if(transform.position == target_base){
