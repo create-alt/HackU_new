@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public AudioSource hitSound;
 
     private bool isShooting = false; // コルーチンが実行中かどうかのフラグ
     private bool checker = false;
@@ -27,9 +28,9 @@ public class Gun : MonoBehaviour
 
             //balletプレハブをもとにインスタンスを生成
             //元のオブジェクトと被らないように座標を調整
-            Instantiate(obj, new Vector3(0.0f, 0.0f, 2.5f), Quaternion.identity);
+            Instantiate(obj, new Vector3(0.0f, 0f, -30f), Quaternion.identity);
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0f);
 
             isShooting = false;
         }
@@ -47,6 +48,7 @@ public class Gun : MonoBehaviour
         {
             checker = true;
             Debug.Log("checker is true");
+            hitSound.Play();
         }
 
 

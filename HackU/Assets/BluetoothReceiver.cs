@@ -10,8 +10,9 @@ public class BluetoothReceiver : MonoBehaviour
     private bool keepReading;
 
     // シリアル通信の設定
-    public string portName = "/dev/ttyUSB0"; // M5StickC Plus2では実際のポートを利用
-    public int baudRate = 115200; // ボーレート
+    //private string portName = "/dev/ttyUSB0"; // M5StickC Plus2では実際のポートを利用
+    private string portName = "COM3"; // M5StickC Plus2では実際のポートを利用
+    private int baudRate = 115200; // ボーレート
 
     private string receivedData = ""; // 受信データを格納
     private object dataLock = new object(); // データロックオブジェクト
@@ -29,6 +30,7 @@ public class BluetoothReceiver : MonoBehaviour
         // シリアルポートが開けるか確認する
         try
         {
+            Debug.Log("Serial port opened");
             serialPort.Open();
         }
         catch (Exception ex)
@@ -55,6 +57,10 @@ public class BluetoothReceiver : MonoBehaviour
                 dataToProcess = receivedData;
                 receivedData = ""; // 受信データをクリア
             }
+            else
+            {
+                Debug.Log("cannot received");
+            }
         }
 
         if (dataToProcess != null)
@@ -62,6 +68,10 @@ public class BluetoothReceiver : MonoBehaviour
             // 受け取ったデータの処理
             Debug.Log("data original: " + dataToProcess);
             ProcessData(dataToProcess);
+        }
+        else
+        {
+            Debug.Log("Cannot get data");
         }
     }
 
@@ -99,18 +109,18 @@ public class BluetoothReceiver : MonoBehaviour
         // cursorに渡すデータとして成形する
         if (values.Length >= 4) // 必要な値の数を確認
         {
-            roll = float.Parse(values[0]) * 3f;
+            //roll = float.Parse(values[0]) * 3f;
             //pitch = float.Parse(values[1]) * 3f;
             //yaw = float.Parse(values[2]) * 3f;
-            is_fire = int.Parse(values[3]);
+            is_fire = int.Parse(values[0]);
 
             //accX = float.Parse(values[4]);
             //accY = float.Parse(values[5]);
             //accZ = float.Parse(values[6]);
 
-            //gyroX = float.Parse(values[7]);
+            gyroX = float.Parse(values[1]) * Time.deltaTime;
             //gyroY = float.Parse(values[8]);
-            gyroZ = float.Parse(values[9]) * Time.deltaTime;
+            gyroZ = float.Parse(values[3]) * Time.deltaTime;
 
             //pitch = pitch + accX * Time.deltaTime;
 

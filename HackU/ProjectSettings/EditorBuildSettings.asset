@@ -4,5 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/TextMesh Pro/Scenes/New Scene.unity
+    guid: 0a9e617c8dd18364b9c40c5c895d2a87
+  - enabled: 1
+    path: Assets/save.unity
+    guid: 2906697e2ec7edf4abcaae77d11c6092
+  - enabled: 1
+    path: Assets/end.unity
+    guid: 88f46c12d80d4b744b933ab375ebb330
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
