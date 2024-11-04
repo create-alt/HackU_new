@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 38
+  controlID: 36
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 39
+  controlID: 37
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 40
+  controlID: 38
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -225,7 +225,7 @@ MonoBehaviour:
   - {fileID: 13}
   - {fileID: 17}
   m_Selected: 1
-  m_LastSelected: 1
+  m_LastSelected: 0
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -318,9 +318,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 82070000
-      m_LastClickedID: 0
-      m_ExpandedIDs: bef9ffff
+      m_SelectedIDs: 4608ffff
+      m_LastClickedID: -63418
+      m_ExpandedIDs: 4808ffff8809ffff920bffffca0bffff5612ffff8016ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -990,9 +990,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 1, z: 0, w: 0}
   m_Size:
-    m_Target: 1.9526861
+    m_Target: 14.156197
     speed: 2
-    m_Value: 1.9526861
+    m_Value: 13.546599
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1082,14 +1082,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets
   m_LastFoldersGridSize: 96
-  m_LastProjectPath: C:\Users\TatsumiYura\Documents\GitHub\HackU_new\HackU
+  m_LastProjectPath: C:\Users\tokiy\Desktop\HackU_new\HackU
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 92c70000
-    m_LastClickedID: 51090
-    m_ExpandedIDs: 00000000e2c5000092c7000000ca9a3bffffff7f
+    m_SelectedIDs: 900a0100
+    m_LastClickedID: 68240
+    m_ExpandedIDs: 00000000900a0100980a01009a0a010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1118,7 +1118,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e2c50000
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1282,8 +1282,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 361
-    y: 79
+    x: -31639
+    y: -31964
     width: 1087
     height: 526
   m_SerializedDataModeController:
@@ -1343,18 +1343,18 @@ MonoBehaviour:
       y: 21
       width: 1087
       height: 505
-    m_Scale: {x: 0.5526036, y: 0.5526036}
-    m_Translation: {x: 543.5, y: 267.68066}
+    m_Scale: {x: 0.5583299, y: 0.5583299}
+    m_Translation: {x: 543.5, y: 266.37476}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -983.526
-      y: -484.39905
-      width: 1967.052
-      height: 913.8558
+      x: -973.43884
+      y: -477.09207
+      width: 1946.8777
+      height: 904.4832
     m_MinimalGUI: 1
   m_defaultScale: 0.4675926
   m_LastWindowPixelSize: {x: 1087, y: 526}

@@ -690,6 +690,7 @@ MonoBehaviour:
   targetLifetime: 3
   spawnIntervalMin: 3
   spawnIntervalMax: 3
+  elapsedTime: 0
 --- !u!82 &1490094149
 AudioSource:
   m_ObjectHideFlags: 0
@@ -927,6 +928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4b43a3d3806d34f9addb0ec89e4426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  use_micon: 0
   goal_serial: {fileID: 1214299478}
 --- !u!65 &1724910073
 BoxCollider:
