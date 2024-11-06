@@ -15,7 +15,8 @@ public class Cursor : MonoBehaviour
     Vector3 target_serial;
 
     BluetoothReceiver target_script;
-    private float X = 0f, Y = 0f, Z = 0f, gyro = 0f;
+    public float X = 0f, Y = 0f, Z = 0f, gyro = 0f;
+    public float minus_X = 0, minus_Y = 0;
     private int is_fire = 0;
 
     // Start is called before the first frame update
@@ -37,8 +38,8 @@ public class Cursor : MonoBehaviour
             try
             {
                 target_script = GameObject.Find("Reciever").GetComponent<BluetoothReceiver>();
-                X -= target_script.gyroZ;
-                Y -= target_script.gyroX;
+                X -= (target_script.gyroZ - minus_X);
+                Y -= (target_script.gyroX - minus_Y);
                 Z = target_script.yaw;
 
                 //Debug.Log(target_script.yaw);

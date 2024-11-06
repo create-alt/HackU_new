@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class StratButton : MonoBehaviour
+public class StartButton : MonoBehaviour
 {
     private void OnMouseUpAsButton()
     {
-        SceneManager.LoadScene("save");
+        SceneManager.LoadScene("sellect_stage");
     }
 }
