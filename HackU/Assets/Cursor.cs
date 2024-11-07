@@ -38,6 +38,8 @@ public class Cursor : MonoBehaviour
             try
             {
                 target_script = GameObject.Find("Reciever").GetComponent<BluetoothReceiver>();
+
+
                 X -= (target_script.gyroZ - minus_X);
                 Y -= (target_script.gyroX - minus_Y);
                 Z = target_script.yaw;

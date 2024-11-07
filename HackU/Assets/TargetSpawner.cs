@@ -42,7 +42,8 @@ public class TargetSpawner : MonoBehaviour
         );
 
         // “I‚ğ¶¬
-        GameObject target = Instantiate(targetPrefab, randomPosition, Quaternion.identity);
+        Quaternion rot = Quaternion.Euler(0, 0, 90);
+        GameObject target = Instantiate(targetPrefab, randomPosition, rot);
 
         // “I‚ğˆê’èŠÔŒã‚ÉÁ‚·
         Destroy(target, targetLifetime);

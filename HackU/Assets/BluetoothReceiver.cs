@@ -118,9 +118,9 @@ public class BluetoothReceiver : MonoBehaviour
             //accY = float.Parse(values[5]);
             //accZ = float.Parse(values[6]);
 
-            gyroX = float.Parse(values[1]) * Time.deltaTime;
+            gyroX = float.Parse(values[1]) * Time.deltaTime * 0.8f;
             //gyroY = float.Parse(values[8]);
-            gyroZ = float.Parse(values[3]) * Time.deltaTime;
+            gyroZ = float.Parse(values[3]) * Time.deltaTime * 0.8f;
 
             //pitch = pitch + accX * Time.deltaTime;
 
