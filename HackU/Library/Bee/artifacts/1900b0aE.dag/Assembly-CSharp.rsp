@@ -444,6 +444,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.11f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Ballet.cs"
 "Assets/BluetoothReceiver.cs"
+"Assets/Creating_target.cs"
 "Assets/Cursor.cs"
 "Assets/GamaeManager.cs"
 "Assets/Gun.cs"
@@ -454,6 +455,7 @@
 "Assets/StratButton.cs"
 "Assets/TargetDestroy.cs"
 "Assets/TargetSpawner.cs"
+"Assets/target_moving.cs"
 -langversion:9.0
 /deterministic
 /optimize+
