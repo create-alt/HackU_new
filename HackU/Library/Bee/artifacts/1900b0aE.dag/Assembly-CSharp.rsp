@@ -450,6 +450,7 @@
 "Assets/Gun.cs"
 "Assets/LookAtTarget.cs"
 "Assets/reset.cs"
+"Assets/Resources/RotationTarget.cs"
 "Assets/Scene/sellect_easystage.cs"
 "Assets/Scene/sellect_hardstage.cs"
 "Assets/StratButton.cs"

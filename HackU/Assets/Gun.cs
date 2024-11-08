@@ -34,7 +34,7 @@ public class Gun : MonoBehaviour
 
             //balletプレハブをもとにインスタンスを生成
             //元のオブジェクトと被らないように座標を調整
-            Instantiate(obj, new Vector3(0.0f, 0f, -30f), Quaternion.identity);
+            Instantiate(obj, transform.position, Quaternion.identity);
 
             yield return new WaitForSeconds(0f);
 

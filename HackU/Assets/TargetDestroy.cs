@@ -13,6 +13,7 @@ public class TargetDestroy : MonoBehaviour
     {
 
     }
+    
     private void OnTriggerEnter(Collider other)
     {
         //衝突したオブジェクトが「Target」タグを持っている場合

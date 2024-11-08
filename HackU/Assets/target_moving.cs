@@ -4,6 +4,10 @@ public class target_moving : MonoBehaviour
 {
     private Vector3 start, end;
 
+    public float rotationSpeed = 100f; // 回転速度を指定
+
+    private bool isRotating = false;
+
     void Start()
     {
         transform.Rotate(90, 0, 0);
@@ -16,19 +20,30 @@ public class target_moving : MonoBehaviour
 
     void Update(){
         Vector3 current = transform.position;            //現在の玉の位置（玉の出現と発射は原点から行う）
-        float maxDistanceDelta = 5.0f * Time.deltaTime;  //1フレームあたりの移動速度
+        float maxDistanceDelta = 1.0f * Time.deltaTime;  //1フレームあたりの移動速度
         transform.position = Vector3.MoveTowards(current, end, maxDistanceDelta);
 
         if(transform.position == end){
             //目標場所にたどり着いたら自分自身を削除する
             Destroy(this.gameObject);
         }
+
+        if (isRotating)
+        {
+            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+        }
     }
 
-    // デフォルトマテリアルかどうかを判断するヘルパーメソッド
-    bool IsDefaultMaterial(Material material)
+    // 球が円柱に当たったときに回転を開始する
+    private void OnCollisionEnter(Collision collision)
     {
-        // マテリアルのシェーダーが "Standard" か、名前が "Default-Material" であればデフォルトとみなす
-        return material.shader.name == "Standard" || material.name == "Default-Material";
+        if (collision.gameObject.CompareTag("Bullet")) // 球のタグを"Bullet"に設定して判定
+        {
+            Debug.Log("attack");
+            isRotating = true;
+        }
     }
+
+    // 回転を停止する場合の例（オプション）
+   
 }

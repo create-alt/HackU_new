@@ -25,7 +25,7 @@ public class Cursor : MonoBehaviour
         goal_serial = GameObject.Find("Receiver");
 
         // スクリーン座標をワールド座標に変換する
-        Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(0f, 0f, 5f)); // マウス座標は2次元なので3次元目を明示的に指定する
+        Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(0f, 0f, -1.5f)); // マウス座標は2次元なので3次元目を明示的に指定する
         // ワールド座標をゲームオブジェクトの座標に設定する
         transform.position = pos;
     }
@@ -61,7 +61,7 @@ public class Cursor : MonoBehaviour
                 // スクリーン座標をワールド座標に変換
                 //Vector3 targetPos = Camera.main.ScreenToWorldPoint(new Vector3(0f, (float)Z, 30f));
 
-                transform.position = new Vector3(X, (float)Y, 5f);
+                transform.position = new Vector3(X, (float)Y, -1.5f);
 
                 // 補間して滑らかに移動
                 // transform.position = Vector3.Lerp(currentPos, targetPos, 0.1f); // 第三引数は補間の割合
@@ -75,7 +75,7 @@ public class Cursor : MonoBehaviour
         {
             // マウスの座標を取得し、それに基づいてオブジェクトの位置を更新する
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 25f; // カメラからの距離を設定
+            mousePosition.z = 14f; // カメラからの距離を設定
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
             // オブジェクトの位置をマウスのワールド座標に設定
