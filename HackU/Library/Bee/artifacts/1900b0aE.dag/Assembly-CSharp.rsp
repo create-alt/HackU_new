@@ -453,6 +453,7 @@
 "Assets/Resources/RotationTarget.cs"
 "Assets/Scene/sellect_easystage.cs"
 "Assets/Scene/sellect_hardstage.cs"
+"Assets/Score_Manager.cs"
 "Assets/StratButton.cs"
 "Assets/TargetDestroy.cs"
 "Assets/TargetSpawner.cs"

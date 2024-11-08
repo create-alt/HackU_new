@@ -3,7 +3,7 @@ using System.IO.Ports;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class StratButton : MonoBehaviour
+public class reset : MonoBehaviour
 {
     public bool reset_micon = true;
 

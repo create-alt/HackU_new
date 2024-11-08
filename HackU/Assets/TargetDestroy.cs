@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TargetDestroy : MonoBehaviour
 {
+    public Score_Manager score_manager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,13 +17,15 @@ public class TargetDestroy : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        score_manager = GameObject.Find("Score_Manager").GetComponent<Score_Manager>();
+
         //衝突したオブジェクトが「Target」タグを持っている場合
         if (other.CompareTag("Target"))
         {
             // 的を消す
             Destroy(other.gameObject);
 
-            
+            score_manager.score++;
         }
     }
 }
