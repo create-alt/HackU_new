@@ -72,6 +72,8 @@
     <Compile Include="Assets\Scene\sellect_easystage.cs" />
     <Compile Include="Assets\StratButton.cs" />
     <Compile Include="Assets\Scene\sellect_hardstage.cs" />
+    <Compile Include="Assets\Scene\Retry_start.cs" />
+    <Compile Include="Assets\Show_Score.cs" />
     <Compile Include="Assets\LookAtTarget.cs" />
     <Compile Include="Assets\Ballet.cs" />
     <Compile Include="Assets\BluetoothReceiver.cs" />
