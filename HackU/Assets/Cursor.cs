@@ -39,32 +39,27 @@ public class Cursor : MonoBehaviour
             {
                 target_script = GameObject.Find("Reciever").GetComponent<BluetoothReceiver>();
 
+                float delta_X = target_script.gyroZ;
+                float delta_Y = target_script.gyroX;
 
-                X -= (target_script.gyroZ - minus_X);
-                Y -= (target_script.gyroX - minus_Y);
-                Z = target_script.yaw;
+                
 
-                //Debug.Log(target_script.yaw);
+                X -= delta_X;
+                Y -= delta_Y; 
+
 
                 is_fire = target_script.is_fire;
 
                 // X, Yの範囲を制限
-                // X = Mathf.Clamp((float)X, -30f, 30f);
                 X = Mathf.Clamp((float)X, -40f, 40f);
 
-                //Y = (float)Math.Round(Y, 2, MidpointRounding.AwayFromZero);
                 Y = Mathf.Clamp((float)Y, -23f, 23f);
 
                 // 現在のオブジェクトの位置
                 // Vector3 currentPos = transform.position;
 
-                // スクリーン座標をワールド座標に変換
-                //Vector3 targetPos = Camera.main.ScreenToWorldPoint(new Vector3(0f, (float)Z, 30f));
+                transform.position = new Vector3(X, Y, -1.5f);
 
-                transform.position = new Vector3(X, (float)Y, -1.5f);
-
-                // 補間して滑らかに移動
-                // transform.position = Vector3.Lerp(currentPos, targetPos, 0.1f); // 第三引数は補間の割合
             }
             catch (System.Exception e)
             {

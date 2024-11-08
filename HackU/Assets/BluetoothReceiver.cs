@@ -21,7 +21,9 @@ public class BluetoothReceiver : MonoBehaviour
     public float roll = 0f, pitch = 0f, yaw = 0f;
     public float accX = 0f, accY = 0f, accZ=0f;
     public float gyroX=0f, gyroY = 0f, gyroZ=0f;
+    public float init_gyroX = 0f, init_gyroY = 0f;
     public int is_fire = 0;
+    public bool is_first = true;
 
     void Start()
     {
@@ -118,15 +120,23 @@ public class BluetoothReceiver : MonoBehaviour
             //accY = float.Parse(values[5]);
             //accZ = float.Parse(values[6]);
 
-            gyroX = float.Parse(values[1]) * Time.deltaTime * 0.8f;
+            gyroX = float.Parse(values[1]) * Time.deltaTime * 0.6f;
             //gyroY = float.Parse(values[8]);
-            gyroZ = float.Parse(values[3]) * Time.deltaTime * 0.8f;
+            gyroZ = float.Parse(values[3]) * Time.deltaTime * 0.6f;
 
             //pitch = pitch + accX * Time.deltaTime;
 
 
 
             //Debug.Log($"data: {data}");
+
+            if(is_first)
+            {
+                is_first = false;
+
+                init_gyroX = gyroX;
+                init_gyroY = gyroY;
+            }
         }
         else
         {

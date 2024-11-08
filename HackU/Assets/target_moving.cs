@@ -13,8 +13,8 @@ public class target_moving : MonoBehaviour
         transform.Rotate(90, 0, 0);
         float y = Random.Range(-5.0f, 5.0f);
 
-        start = new Vector3(-17.0f, y, -10f);
-        end   = new Vector3(17.0f, y, -10f);
+        start = new Vector3(-17.0f, y, -1f);
+        end   = new Vector3(17.0f, y, -1f);
         transform.position = start;
     }
 

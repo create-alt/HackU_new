@@ -63,10 +63,15 @@
   <ItemGroup>
     <Compile Include="Assets\Gun.cs" />
     <Compile Include="Assets\Cursor.cs" />
+    <Compile Include="Assets\target_moving.cs" />
+    <Compile Include="Assets\Resources\RotationTarget.cs" />
+    <Compile Include="Assets\Creating_target.cs" />
     <Compile Include="Assets\reset.cs" />
     <Compile Include="Assets\GamaeManager.cs" />
     <Compile Include="Assets\TargetDestroy.cs" />
+    <Compile Include="Assets\Scene\sellect_easystage.cs" />
     <Compile Include="Assets\StratButton.cs" />
+    <Compile Include="Assets\Scene\sellect_hardstage.cs" />
     <Compile Include="Assets\LookAtTarget.cs" />
     <Compile Include="Assets\Ballet.cs" />
     <Compile Include="Assets\BluetoothReceiver.cs" />

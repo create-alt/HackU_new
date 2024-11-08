@@ -13,7 +13,7 @@ public class CreatingTarget : MonoBehaviour
         // マテリアルがロードできた場合のみ3秒ごとに `SpawnTarget` メソッドを呼び出す
         if (materials.Length > 0)
         {
-            InvokeRepeating("SpawnTarget", 0f, 3f);
+            InvokeRepeating("SpawnTarget", 0f, 1f);
         }
         else
         {
@@ -33,7 +33,7 @@ public class CreatingTarget : MonoBehaviour
             Material selectedMaterial = materials[Random.Range(0, materials.Length)];
 
             // target のインスタンスを生成
-            GameObject targetInstance = Instantiate(targetPrefab, new Vector3(-30.0f, 0.0f, -10f), Quaternion.identity);
+            GameObject targetInstance = Instantiate(targetPrefab, new Vector3(-30.0f, 0.0f, -1f), Quaternion.identity);
 
             // Renderer コンポーネントを取得してマテリアルを適用
             Renderer renderer = targetInstance.GetComponent<Renderer>();
