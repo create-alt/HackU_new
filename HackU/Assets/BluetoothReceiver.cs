@@ -61,7 +61,7 @@ public class BluetoothReceiver : MonoBehaviour
             }
             else
             {
-                Debug.Log("cannot received");
+                //Debug.Log("cannot received");
             }
         }
 
@@ -73,7 +73,7 @@ public class BluetoothReceiver : MonoBehaviour
         }
         else
         {
-            Debug.Log("Cannot get data");
+            //Debug.Log("Cannot get data");
         }
     }
 

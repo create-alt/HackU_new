@@ -454,6 +454,7 @@
 "Assets/Scene/Retry_start.cs"
 "Assets/Scene/sellect_easystage.cs"
 "Assets/Scene/sellect_hardstage.cs"
+"Assets/SceneTrans.cs"
 "Assets/Score_Manager.cs"
 "Assets/Show_Score.cs"
 "Assets/StratButton.cs"

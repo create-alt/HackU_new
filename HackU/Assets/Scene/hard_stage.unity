@@ -370,7 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa79fdf98fc15c43921bdd2c568cc0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reset_micon: 0
+  reset_micon: 1
+  is_reset: 0
 --- !u!4 &398281880
 Transform:
   m_ObjectHideFlags: 0
@@ -693,6 +694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 833070782}
   - component: {fileID: 833070781}
+  - component: {fileID: 833070783}
   m_Layer: 0
   m_Name: Score_Manager
   m_TagString: Untagged
@@ -712,7 +714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f612c345baeb6b348aa7aa9d813b04b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   score_object: {fileID: 1430244893}
 --- !u!4 &833070782
 Transform:
@@ -729,6 +730,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &833070783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833070780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0a3ab52aaa878449711c83e52ab155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &877068048
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4b43a3d3806d34f9addb0ec89e4426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  use_micon: 0
+  use_micon: 1
   goal_serial: {fileID: 0}
   X: 0
   Y: 0

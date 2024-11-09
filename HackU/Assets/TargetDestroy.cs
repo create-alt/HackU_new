@@ -25,7 +25,8 @@ public class TargetDestroy : MonoBehaviour
             // ìIÇè¡Ç∑
             Destroy(other.gameObject);
 
-            score_manager.score++;
+            Score_Manager.score++;
+            Show_Score.score++;
         }
     }
 }

@@ -20,7 +20,7 @@ public class target_moving : MonoBehaviour
 
     void Update(){
         Vector3 current = transform.position;            //現在の玉の位置（玉の出現と発射は原点から行う）
-        float maxDistanceDelta = 1.0f * Time.deltaTime;  //1フレームあたりの移動速度
+        float maxDistanceDelta = 12.0f * Time.deltaTime;  //1フレームあたりの移動速度
         transform.position = Vector3.MoveTowards(current, end, maxDistanceDelta);
 
         if(transform.position == end){

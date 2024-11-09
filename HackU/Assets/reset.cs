@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class reset : MonoBehaviour
 {
     public bool reset_micon = true;
+    public int is_reset = 0;
 
     private SerialPort serialPort;
     private Thread serialThread;
@@ -17,20 +18,21 @@ public class reset : MonoBehaviour
     private string receivedData = ""; // 受信データを格納
     private object dataLock = new object(); // データロックオブジェクト
 
-    
-    BluetoothReceiver receiver = GameObject.Find("Reciever").GetComponent<BluetoothReceiver>();
-
-    private void Start()
+    void Start()
     {
         if (reset_micon)
         {
             // シリアルポートを開く
             serialPort = new SerialPort(portName, baudRate);
+            serialPort.ReadTimeout = 500; // タイムアウト設定
 
             try
             {
                 Debug.Log("Serial port opened");
                 serialPort.Open();
+                keepReading = true;  // データの読み取りを開始する
+                serialThread = new Thread(ReadSerial);  // 新しいスレッドを作成
+                serialThread.Start();  // スレッドを開始
             }
             catch (Exception ex)
             {
@@ -38,7 +40,6 @@ public class reset : MonoBehaviour
                 return;
             }
         }
-        
     }
 
     void Update()
@@ -57,7 +58,7 @@ public class reset : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("cannot received");
+                    Debug.Log("reset cannot received");
                 }
             }
 
@@ -83,7 +84,7 @@ public class reset : MonoBehaviour
                 target_script.transform.position = new Vector3(0, 0, 5f);
             }
         }
-       
+
     }
 
     // シリアルデータを受信するスレッドの処理
@@ -112,11 +113,12 @@ public class reset : MonoBehaviour
         }
     }
 
-    private void ProcessData(string data)
+    void ProcessData(string data)
     {
-        int is_reset = int.Parse(data);
+        Debug.Log(data);
+        is_reset = int.Parse(data);
 
-        if (is_reset == 0)
+        if (is_reset == 1)
         {
             Cursor target_script = GameObject.Find("Cursor").GetComponent<Cursor>();
             target_script.X = 0;
@@ -124,7 +126,7 @@ public class reset : MonoBehaviour
 
             target_script.transform.position = new Vector3(0, 0, 5f);
         }
-            
+
     }
 
     void OnApplicationQuit()
