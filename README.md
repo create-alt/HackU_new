@@ -8,3 +8,6 @@ LINEヤフー様主催の公大高専HackUに向けて開発しているシュ�
 
 環境：
 - Unity 6000.0.11f1
+
+プレイ画面：
+![](img/unity_running.png)
